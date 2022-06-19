@@ -96,7 +96,8 @@ class FrontendController extends Controller
 
     public function notclocked()
     {
-        $users = Attendance::whereNull('date_recorded')->get();
+        $user = Attendance::where('date_recorded',Carbon::now()->format('Y-m-d'))->pluck('user_id');
+        $users = User::whereNotIn('id',$user)->get();
         return view('clocked.notclocked',compact('users'));
         
     }

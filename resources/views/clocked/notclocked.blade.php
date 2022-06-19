@@ -46,7 +46,7 @@
             <tr class="border border-gray-400 ">
                 
                 <td class="py-2 border border-gray-300 px-2">
-                    {{$att->user->name}}
+                    {{$att->name}}
                 </td>
                
                 <td class="py-2 border border-gray-300 px-2">
