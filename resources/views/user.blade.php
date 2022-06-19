@@ -105,6 +105,8 @@
                             @csrf
                             <button type="submit"><i class="fa-solid fa-times text-2xl px-2 text-red-500 hover:text-red-600"></i></button>
                         </form>
+
+                        <a title="Payment" href="{{route('payments.index',$user->id)}}"><i class="fa-solid fa-money-bill text-2xl px-2 text-emerald-500 hover:text-emerald-600"></i></a>
                     </td>
                 </tr>
             @endforeach

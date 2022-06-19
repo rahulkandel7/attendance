@@ -3,6 +3,7 @@
 use App\Http\Controllers\AttendanceController;
 use App\Http\Controllers\FrontendController;
 use App\Http\Controllers\LeaveController;
+use App\Http\Controllers\PaymentController;
 use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
 use Jenssegers\Agent\Agent;
@@ -48,8 +49,14 @@ if($agent->isMobile()){
     Route::put('users/expire/{id}', [UserController::class, 'expire'])->name('users.expire')->middleware('auth','admin');
     Route::put('users/revive/{id}', [UserController::class, 'revive'])->name('users.revive')->middleware('auth','admin');
 
-    Route::get('/clockedin', [FrontendController::class,'clockedin'])->name('clockedin')->middleware(['auth','auth']);
-    Route::get('/notclocked', [FrontendController::class,'notclocked'])->name('notclocked')->middleware(['auth','auth']);
+    Route::get('/clockedin', [FrontendController::class,'clockedin'])->name('clockedin')->middleware(['admin','auth']);
+    Route::get('/notclocked', [FrontendController::class,'notclocked'])->name('notclocked')->middleware(['admin','auth']);
+
+    Route::get('/payments/{id}',[PaymentController::class, 'index'])->name('payments.index')->middleware(['auth','admin']);
+    Route::post('/payments/store',[PaymentController::class, 'store'])->name('payments.store')->middleware(['auth','admin']);
+    Route::put('/payments/update/{id}',[PaymentController::class, 'update'])->name('payments.update')->middleware(['auth','admin']);
+    Route::get('/payments/edit/{id}',[PaymentController::class, 'edit'])->name('payments.edit')->middleware(['auth','admin']);
+    Route::delete('/payments/delete/{id}',[PaymentController::class, 'delete'])->name('payments.delete')->middleware(['auth','admin']);
 
    });
 
