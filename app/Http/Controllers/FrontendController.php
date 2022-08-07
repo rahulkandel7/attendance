@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Attendance;
 use App\Models\Leave;
+use App\Models\Payment;
 use App\Models\User;
 use Carbon\Carbon;
 use DateTime;
@@ -134,5 +135,12 @@ class FrontendController extends Controller
 
         
         return view('birthdays',compact('birthdays'));
+    }
+
+    public function payments()
+    {
+        $payments = Payment::where('user_id',Auth::user()->id)->get();
+
+        return view('payments',compact('payments'));
     }
 }

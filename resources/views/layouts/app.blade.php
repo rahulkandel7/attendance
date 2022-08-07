@@ -54,6 +54,12 @@
                                             <i class="fa-solid fa-person-walking pr-2"></i> Leave Application
                                         </li>
                                     </a>
+
+                                    <a href="{{route('payment')}}">
+                                        <li class="{{Request::routeIs('payment') ? 'bg-indigo-500 text-white' : 'text-indigo-700 '}} hover:text-white my-2 hover:bg-indigo-600 px-4 py-2  text-xl font-bold">
+                                            <i class="fa-solid fa-dollar pr-2"></i> My Payments
+                                        </li>
+                                    </a>
                                 @endif
 
                                 @if(Auth::user()->role == 'admin')

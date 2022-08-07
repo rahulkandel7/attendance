@@ -58,6 +58,8 @@ if($agent->isMobile()){
     Route::get('/payments/edit/{id}',[PaymentController::class, 'edit'])->name('payments.edit')->middleware(['auth','admin']);
     Route::delete('/payments/delete/{id}',[PaymentController::class, 'delete'])->name('payments.delete')->middleware(['auth','admin']);
 
+    Route::get('/my-payments',[FrontendController::class, 'payments'])->name('payment')->middleware(['auth']);
+
    });
 
     require __DIR__.'/auth.php';

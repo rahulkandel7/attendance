@@ -46,7 +46,7 @@
                     Incentive Pay
                 </td>
                 <td class="py-2 border border-gray-300 px-2">
-                    Tax(1%)
+                    Tax
                 </td>
                 <td class="py-2 border border-gray-300 px-2">
                     Deduction
