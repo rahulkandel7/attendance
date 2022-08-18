@@ -7,8 +7,6 @@ use App\Models\Leave;
 use App\Models\Payment;
 use App\Models\User;
 use Carbon\Carbon;
-use DateTime;
-use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
 class FrontendController extends Controller
@@ -77,14 +75,27 @@ class FrontendController extends Controller
         
         $today_leave = Leave::where('created_at','=' ,Carbon::now()->format('Y-m-d'))->count();
 
-        $birthday = User::whereMonth('dob',Carbon::now())->count();
+
+        $totalBirthday = 0;
+        $hbirthday = 0;
+        $birthdays = User::whereMonth('dob',Carbon::now())->get();
+        foreach ($birthdays as $birthday) {
+            $datee = Carbon::parse($birthday->dob)->format('d');
+
+
+            $totalBirthday= $datee-$date1;
+            if($totalBirthday > 0){
+                $hbirthday++;
+            }
+
+        }
 
         $ta = Attendance::where('user_id',Auth::user()->id)->count();
         $month = Attendance::where('user_id',Auth::user()->id)->whereMonth('created_at',date('m'))->count();
         $le =  Attendance::where('user_id',Auth::user()->id)->whereNotNull('late_entry')->count();
         $ee =  Attendance::where('user_id',Auth::user()->id)->whereNotNull('early_exit')->count();
 
-        return view('dashboard',compact('attendances','ta','le','ee','total_employee','clocked_in', 'not_clocked_in','total_application','today_leave','month','birthday','mybirthday'));
+        return view('dashboard',compact('attendances','ta','le','ee','total_employee','clocked_in', 'not_clocked_in','total_application','today_leave','month','birthdays','mybirthday', 'hbirthday'));
     }
 
     public function clockedin()

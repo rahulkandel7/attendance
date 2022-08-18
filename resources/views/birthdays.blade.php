@@ -38,7 +38,7 @@
         @endphp
         <tbody>
             @foreach ($birthdays as $birthday)
-            @if($birthday->date >-1 )
+            @if($birthday->date > -1 )
             <tr class="border border-gray-400 ">
                 <td class="py-2 border border-gray-300 px-2">
                     @php

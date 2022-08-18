@@ -74,17 +74,19 @@
                         </div>
                     </div>
         
-                    <div class="w-full h-32 bg-green-500 rounded-lg shadow-md shadow-green-200 my-1 ">
-                        <h1 class="text-white font-bold text-xl pt-4 px-4">
-                            This Month Attendance
-                        </h1>
-                        <div class="flex justify-between my-2">
-                            <i class="fa-solid fa-clipboard-user text-3xl text-gray-100 pl-2 opacity-80"></i>
-                            <p class="text-right pr-6 font-bold text-white text-3xl">
-                                {{$month}} 
-                            </p>
+                    <a href="{{route('monthview',Auth::user()->id)}}">
+                        <div class="w-full h-32 bg-green-500 rounded-lg shadow-md shadow-green-200 my-1 ">
+                            <h1 class="text-white font-bold text-xl pt-4 px-4">
+                                This Month Attendance 
+                            </h1>
+                            <div class="flex justify-between my-2">
+                                <i class="fa-solid fa-clipboard-user text-3xl text-gray-100 pl-2 opacity-80"></i>
+                                <p class="text-right pr-6 font-bold text-white text-3xl">
+                                    {{$month}} 
+                                </p>
+                            </div>
                         </div>
-                    </div>
+                    </a>
             
                     <div class="w-full h-32 bg-fuchsia-500 rounded-lg shadow-md shadow-fuchsia-200 my-1 ">
                         <h1 class="text-white font-bold text-xl pt-4 px-4">
@@ -206,7 +208,7 @@
                             <div class="flex justify-between my-2">
                                 <i class="fa-solid fa-house-person-leave text-3xl text-gray-100 pl-2 opacity-80"></i>
                                 <p class="text-right pr-6 font-bold text-white text-3xl">
-                                     {{$birthday}}
+                                     {{$hbirthday}}
                                 </p>
                             </div>
                         </div>
@@ -492,7 +494,7 @@
         
     </script>
 
-   @if($birthday)
+   @if($mybirthday)
     <script>
             var w = c.width = window.innerWidth,
             h = c.height = window.innerHeight,

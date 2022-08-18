@@ -8,6 +8,7 @@ use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
 use Jenssegers\Agent\Agent;
 
+
 $agent = new Agent();
 
 /*
@@ -38,7 +39,7 @@ if($agent->isMobile()){
     Route::get('/application-today', [FrontendController::class,'todayapplication'])->name('todayapplication')->middleware(['auth','admin']);
     Route::get('/attendance', [FrontendController::class,'attendance'])->name('attendance')->middleware(['auth','admin']);
     Route::get('/attendance/{id}', [FrontendController::class,'attendanceView'])->name('attendanceview')->middleware(['auth','admin']);
-    Route::get('/attendance/month/{id}', [FrontendController::class,'monthview'])->name('monthview')->middleware(['auth','admin']);
+    Route::get('/attendance/month/{id}', [FrontendController::class,'monthview'])->name('monthview')->middleware(['auth']);
     Route::get('/attendance/late/{id}', [FrontendController::class,'lateview'])->name('lateview')->middleware(['auth','admin']);
     Route::get('/birthdays', [FrontendController::class,'birthday'])->name('birthday')->middleware(['auth','admin']);
 
